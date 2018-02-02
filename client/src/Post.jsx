@@ -41,6 +41,18 @@ const Post = ({post}) => {
           <div dangerouslySetInnerHTML={{__html: post.description}}></div>
         </a>
       }
+
+      {/* if post is chat */}
+      {post.type === 'chat' &&
+        <div>
+          <div>
+            {post.dialogue.map((message) => {
+              return <p>{`${message.label} ${message.phrase}`}</p>
+            })}
+          </div>
+          <div dangerouslySetInnerHTML={{__html: post.body}}></div>
+        </div>
+      }
     </div>
   )
 }
