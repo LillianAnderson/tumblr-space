@@ -61,6 +61,14 @@ const Post = ({post}) => {
           <div dangerouslySetInnerHTML={{__html: post.caption}}></div>
         </div>
       }
+
+      {/* if post is video */}
+      {post.type === 'video' &&
+        <div>
+          <div dangerouslySetInnerHTML={{__html: post.player[0].embed_code}}></div>
+          <div dangerouslySetInnerHTML={{__html: post.caption}}></div>
+        </div>
+      }
     </div>
   )
 }
