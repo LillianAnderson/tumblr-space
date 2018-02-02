@@ -7,6 +7,7 @@ class App extends React.Component {
     this.state = {
       blogName: '',
       tag: '',
+      searchResults: [],
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -17,9 +18,23 @@ class App extends React.Component {
   handleClick() {
     console.log(this.state.blogName, this.state.tag)
     if (this.state.blogName && !this.state.tag) {
-      //do something
+      axios.get(`https://api.tumblr.com/v2/blog/${this.state.blogName}.tumblr.com/posts?api_key=dP6BRq6BR5kaXS291fcY1GK7y2LDqN1A6FskMWLBCceYoyF5yu`)
+        .then((response) => {
+            const posts = response.data.response.posts.slice(0,10)
+            this.setState({searchResults: posts})
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else if (this.state.blogName && this.state.tag) {
-      //do something
+      axios.get(`https://api.tumblr.com/v2/blog/${this.state.blogName}.tumblr.com/posts?api_key=dP6BRq6BR5kaXS291fcY1GK7y2LDqN1A6FskMWLBCceYoyF5yu&tag=${this.state.tag}`)
+        .then((response) => {
+            const posts = response.data.response.posts.slice(0,10)
+            this.setState({searchResults: posts})
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } else if (!this.state.blogName && this.state.tag) {
       //do something
     } 
