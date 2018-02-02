@@ -22,6 +22,7 @@ class App extends React.Component {
   }
 
   handleClick() {
+    //just blogmame search
     if (this.state.blogName && !this.state.tag) {
       axios.get(`https://api.tumblr.com/v2/blog/${this.state.blogName}.tumblr.com/posts?api_key=dP6BRq6BR5kaXS291fcY1GK7y2LDqN1A6FskMWLBCceYoyF5yu`)
         .then((response) => {
@@ -31,6 +32,7 @@ class App extends React.Component {
         .catch((error) => {
           console.log(error);
         });
+    //blogname and tag search
     } else if (this.state.blogName && this.state.tag) {
       axios.get(`https://api.tumblr.com/v2/blog/${this.state.blogName}.tumblr.com/posts?api_key=dP6BRq6BR5kaXS291fcY1GK7y2LDqN1A6FskMWLBCceYoyF5yu&tag=${this.state.tag}`)
         .then((response) => {
@@ -40,6 +42,7 @@ class App extends React.Component {
         .catch((error) => {
           console.log(error);
         });
+    //just tag search
     } else if (!this.state.blogName && this.state.tag) {
       axios.get(`http://api.tumblr.com/v2/tagged?api_key=dP6BRq6BR5kaXS291fcY1GK7y2LDqN1A6FskMWLBCceYoyF5yu&tag=${this.state.tag}`)
         .then((response) => {
