@@ -36,7 +36,14 @@ class App extends React.Component {
           console.log(error);
         });
     } else if (!this.state.blogName && this.state.tag) {
-      //do something
+      axios.get(`http://api.tumblr.com/v2/tagged?api_key=dP6BRq6BR5kaXS291fcY1GK7y2LDqN1A6FskMWLBCceYoyF5yu&tag=${this.state.tag}`)
+        .then((response) => {
+          const posts = response.data.response.slice(0, 10)
+          this.setState({searchResults: posts})
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     } 
   }
 
