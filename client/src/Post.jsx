@@ -28,6 +28,19 @@ const Post = ({post}) => {
       {post.type === 'quote' &&
         <div dangerouslySetInnerHTML={{__html: post.text}}></div>
       }
+
+      {/* if post is link */}
+      {post.type === 'link' &&
+        <a src={post.url}>
+          {post.photos &&
+            <img src={post.photos[0].original_size.url}/>
+          }
+        
+          <div dangerouslySetInnerHTML={{__html: post.source}}></div>
+          <div dangerouslySetInnerHTML={{__html: post.title}}></div>
+          <div dangerouslySetInnerHTML={{__html: post.description}}></div>
+        </a>
+      }
     </div>
   )
 }
