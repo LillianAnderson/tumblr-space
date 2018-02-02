@@ -1,10 +1,17 @@
 import React from 'react';
 
 
-const Post = ({post}) => {
+const Post = ({post, isFavorite, addFavorite, removeFavorite}) => {
   
   return (
     <div className='post'>
+      {!isFavorite &&
+        <button onClick={addFavorite.bind(this, post)}>ADD</button>
+      }
+      
+      {isFavorite &&
+        <button onClick={removeFavorite.bind(this, post.id)}>REMOVE</button>
+      }
       <p>{post.blog_name}</p>
 
       {/* if post is text */}

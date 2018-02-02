@@ -17,6 +17,8 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleBlogNameChange = this.handleBlogNameChange.bind(this);
     this.handleTagChange = this.handleTagChange.bind(this);
+    this.addFavorite = this.addFavorite.bind(this);
+    this.removeFavorite = this.removeFavorite.bind(this);
   }
 
   handleClick() {
@@ -59,6 +61,14 @@ class App extends React.Component {
     this.setState({tag: e.target.value})
   }
 
+  addFavorite(post) {
+    console.log(post)
+  }
+
+  removeFavorite(id) {
+
+  }
+
   render() {
     return (
       <div className='search'>
@@ -68,8 +78,8 @@ class App extends React.Component {
           </form>
           <button onClick={this.handleClick}>SEARCH</button>
           <div className='content'>
-            <Feed posts={this.state.searchResults}/>
-            <Favorites posts={this.state.favorites}/>
+            <Feed posts={this.state.searchResults} addFavorite={this.addFavorite}/>
+            <Favorites posts={this.state.favorites} removeFavorite={this.removeFavorite}/>
         </div>
       </div>
     )
