@@ -23,6 +23,11 @@ const Post = ({post}) => {
           <div dangerouslySetInnerHTML={{__html: post.caption}}></div>
         </div>
       }
+
+      {/* if post is quote */}
+      {post.type === 'quote' &&
+        <div dangerouslySetInnerHTML={{__html: post.text}}></div>
+      }
     </div>
   )
 }
