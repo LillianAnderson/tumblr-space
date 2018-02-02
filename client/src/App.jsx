@@ -22,7 +22,6 @@ class App extends React.Component {
   }
 
   handleClick() {
-    console.log(this.state.blogName, this.state.tag)
     if (this.state.blogName && !this.state.tag) {
       axios.get(`https://api.tumblr.com/v2/blog/${this.state.blogName}.tumblr.com/posts?api_key=dP6BRq6BR5kaXS291fcY1GK7y2LDqN1A6FskMWLBCceYoyF5yu`)
         .then((response) => {
@@ -70,7 +69,6 @@ class App extends React.Component {
     for (var i = 0; i < this.state.favorites.length; i++) {
       if (this.state.favorites[i].id === id) {
         const removed = this.state.favorites.splice(i, 1)
-        console.log(this.state.favorites)
         this.setState({favorites: this.state.favorites})
       }
     }
@@ -78,14 +76,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className='search'>
-          <form>
+      <div className='content'>
+        <div className='col'>
+          <div className='search'>
+            <div>Blog Name:</div>
             <input id='blog_name' value={this.state.blogName} onChange={this.handleBlogNameChange}/>
+            <div>Tag:</div>
             <input id='tag' value={this.state.tag} onChange={this.handleTagChange}/>
-          </form>
-          <button onClick={this.handleClick}>SEARCH</button>
-          <div className='content'>
-            <Feed posts={this.state.searchResults} addFavorite={this.addFavorite}/>
+            <button onClick={this.handleClick}>SEARCH</button>
+          </div>
+          <Feed posts={this.state.searchResults} addFavorite={this.addFavorite}/>
+        </div>
+        <div className='col'>
             <Favorites posts={this.state.favorites} removeFavorite={this.removeFavorite}/>
         </div>
       </div>

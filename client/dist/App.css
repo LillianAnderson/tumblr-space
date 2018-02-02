@@ -10,10 +10,17 @@
   flex-direction: row;
 }
 
-.favorites, .feed {
+.col {
   display: flex;
-  width: 50%;
+  width: 45%;
   flex-direction: column;
+  text-align: center;
+}
+
+.search {
+  display: flex;
+  flex-flow: wrap;
+  padding: 2%;
 }
 
 .post {
