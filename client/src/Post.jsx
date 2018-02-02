@@ -53,6 +53,14 @@ const Post = ({post}) => {
           <div dangerouslySetInnerHTML={{__html: post.body}}></div>
         </div>
       }
+
+      {/* if post is audio */}
+      {post.type === 'audio' &&
+        <div>
+          <div dangerouslySetInnerHTML={{__html: post.embed}}></div>
+          <div dangerouslySetInnerHTML={{__html: post.caption}}></div>
+        </div>
+      }
     </div>
   )
 }
