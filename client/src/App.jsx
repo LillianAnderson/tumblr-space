@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import Feed from './Feed'
+
 class App extends React.Component {
   constructor() {
     super();
@@ -63,6 +65,10 @@ class App extends React.Component {
             <input id='tag' value={this.state.tag} onChange={this.handleTagChange}/>
           </form>
           <button onClick={this.handleClick}>SEARCH</button>
+          <div className='content'>
+            <Feed posts={this.state.searchResults}/>
+            
+        </div>
       </div>
     )
   }
