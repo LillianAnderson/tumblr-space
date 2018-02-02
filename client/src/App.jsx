@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import Feed from './Feed'
+import Favorites from './Favorites'
 
 class App extends React.Component {
   constructor() {
@@ -10,6 +11,7 @@ class App extends React.Component {
       blogName: '',
       tag: '',
       searchResults: [],
+      favorites: [],
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -67,7 +69,7 @@ class App extends React.Component {
           <button onClick={this.handleClick}>SEARCH</button>
           <div className='content'>
             <Feed posts={this.state.searchResults}/>
-            
+            <Favorites posts={this.state.favorites}/>
         </div>
       </div>
     )
