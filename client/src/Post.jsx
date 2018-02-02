@@ -69,6 +69,15 @@ const Post = ({post}) => {
           <div dangerouslySetInnerHTML={{__html: post.caption}}></div>
         </div>
       }
+
+      {/* if post is answer */}
+      {post.type === 'answer' &&
+        <div>
+          <div>{`${post.asking_name}:`}</div>
+          <div>{post.question}</div>
+          <div dangerouslySetInnerHTML={{__html: post.answer}}></div>
+        </div>
+      }
     </div>
   )
 }
