@@ -1,0 +1,34 @@
+#app {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.favorites, .feed {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+
+.post {
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  border-width: 1px;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 10px;
+  padding: 2%
+}
+
+img, iframe {
+  width: 100%;
+  height: 100%;
+}
