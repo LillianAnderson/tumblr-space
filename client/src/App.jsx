@@ -62,11 +62,18 @@ class App extends React.Component {
   }
 
   addFavorite(post) {
-    console.log(post)
+    const updatedFaves = this.state.favorites.concat([post])
+    this.setState({favorites: updatedFaves})
   }
 
   removeFavorite(id) {
-
+    for (var i = 0; i < this.state.favorites.length; i++) {
+      if (this.state.favorites[i].id === id) {
+        const removed = this.state.favorites.splice(i, 1)
+        console.log(this.state.favorites)
+        this.setState({favorites: this.state.favorites})
+      }
+    }
   }
 
   render() {
